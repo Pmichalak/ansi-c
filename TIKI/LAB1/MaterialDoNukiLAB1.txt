@@ -1,0 +1,77 @@
+Głowna treść zadania to było czytanie pliku znak po znaku:
+
+        FILE *plik;
+        char znak;
+        plik = fopen("nazwa_pliku","r");
+        while (!feof(plik))
+        {
+        fscnaf(plik,"%c",&znak);
+        }
+
+
+Opis użytych metod budowania kodu(linia po lini):
+
+Istnieją dwie metody obsługi czytania i pisania do plików:
+
+    wysokopoziomowa,
+    niskopoziomowa - TA NAS NIE INTERESUJE
+
+Nazwy funkcji z pierwszej grupy zaczynają się od litery "f" (np. fopen(), fread(), fclose()), a identyfikatorem pliku jest wskaźnik na strukturę typu FILE. Owa struktura to pewna grupa zmiennych, która przechowuje dane o danym pliku - jak na przykład aktualną pozycję w nim. Szczegółami nie musisz się przejmować, funkcje biblioteki standardowej same zajmują się wykorzystaniem struktury FILE, programista może więc zapomnieć, czym tak naprawdę jest struktura FILE i traktować taką zmienną jako "uchwyt", identyfikator pliku.
+
+
+Skupimy się teraz na najprostszym z możliwych zagadnień - zapisie i odczycie pojedynczych znaków oraz całych łańcuchów.
+
+Napiszmy zatem nasz pierwszy program, który stworzy plik "test.txt" i umieści w nim tekst "Hello world":
+
+
+         #include <stdio.h>
+         #include <stdlib.h>
+         
+         int main ()
+         {
+           FILE *fp; /* używamy metody wysokopoziomowej - musimy mieć zatem identyfikator pliku, uwaga na gwiazdkę! */
+           char tekst[] = "Hello world";
+           if ((fp=fopen("test.txt", "w"))==NULL) {
+             printf ("Nie mogę otworzyć pliku test.txt do zapisu!\n");
+             exit(1);
+             }
+           fprintf (fp, "%s", tekst); /* zapisz nasz łańcuch w pliku */
+           fclose (fp); /* zamknij plik */
+           return 0;
+         }
+
+
+    Zaawansowane operacje
+
+    Pora na kolejny, tym razem bardziej złożony przykład. Oto krótki program, który swoje wejście zapisuje do pliku o nazwie podanej w linii poleceń:(ZAPISUJE CO DAMY JAKO DRUGI ARGUMENT WYWOŁANIA, pierwszym jest nazwa pliku do zapisu!)
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    /* program udający bardzo prymitywną wersję programu tee(1) */
+     
+    int main (int argc, char *argv[])
+    {
+       FILE *fp;
+       int c;
+       if (argc < 2) {
+          fprintf (stderr, "Uzycie: %s nazwa_pliku\n", argv[0]);
+          exit (-1);
+       }
+       fp = fopen (argv[1], "w");
+       if (!fp) {
+          fprintf (stderr, "Nie moge otworzyc pliku %s\n", argv[1]);
+          exit (-1);
+       }
+       printf("Wcisnij Ctrl+D+Enter lub Ctrl+Z+Enter aby zakonczyc\n");
+       while ( (c = fgetc(stdin)) != EOF) {
+          fputc (c, stdout);
+          fputc (c, fp);
+       }
+       fclose(fp);
+       return 0;
+    }
+
+
+MYSLE ZE TYLE PRZYDATNEJ WIEDZY PRZED LABORKA nr 2 :-(  :-) 
+
+
