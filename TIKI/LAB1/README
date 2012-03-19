@@ -1,2 +1,5 @@
 Dostajecie program i trzeba go przerabiac
 Zadanie zaliczajace zliczyc liczbe znakow w pliku
+I wynik(liczbe znakow) zapisac w innym pliku
+Wszystko ma byc pobieranie jako argumenty wywolania programu np
+program.exe plikDoZliczenia.txt PlikZwynikiem.txt
