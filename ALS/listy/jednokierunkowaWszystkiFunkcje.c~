@@ -50,12 +50,12 @@
  
  int main ()
  {
-
+/*
    first = malloc (sizeof(el_listy));
    first->val = 2;
    first->next = NULL;
-
-dodaj_do_listy(first,3);
+*/
+dodaj_do_listy(first,2);
    wypisz_liste(first);
    return 0;
  }
