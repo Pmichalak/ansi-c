@@ -47,15 +47,40 @@
          }                          /* bo nie chcemy zostawić duplikatów */
        }
  }
+
+void bubble_sort ( int n )
+{
+    int i, j, k, temp ;
+    el_listy *p, *q ;
+
+    k = n ;
+    for ( i = 0 ; i < n - 1 ; i++, k-- )
+    {
+        p = first ;
+        q = p -> next ;
+
+        for ( j = 1 ; j < k ; j++ )
+        {
+            if ( p -> val > q -> val )
+            {
+                temp = p -> val ;
+                p -> val = q -> val ;
+                q -> val = temp ;
+            }
+            p = p -> next ;
+            q = q -> next ;
+        }
+    }
+}
  
  int main ()
  {
-/*
    first = malloc (sizeof(el_listy));
-   first->val = 2;
+   first->val = 4;
    first->next = NULL;
-*/
-dodaj_do_listy(first,2);
+dodaj_do_listy(first,3);
+bubble_sort(2);
    wypisz_liste(first);
+free(first);
    return 0;
  }
