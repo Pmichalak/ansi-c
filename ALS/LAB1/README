@@ -1,0 +1,12 @@
+Lab1
+
+0. Przetestować program NieuporzadkowanaListaJednokierunkowa, tworzący nieuporządkowaną listę jednokierunkową, zawierającą wprowadzane z klawiatury znaki (wartości typu char). 
+Końcem tworzenia listy jest znak ’/’.
+
+1. Zliczanie ile jest elementow na liscie
+
+
+2. Zmodyfikować program z pkt. 1 poprzez dodanie do niego funkcji usuwającej wskazane (poprzez wartość znaku) elementy listy.
+Prototyp funkcji jest następujący:
+usun(Node **root, char Znak);
+Plikowi z kodem źródłowym programu nadać nazwę Program 1-2.

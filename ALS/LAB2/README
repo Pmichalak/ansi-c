@@ -1,0 +1,11 @@
+Napisać program wykorzystujący następujące funkcje przetwarzania uporządkowanej niemalejąco listy jednokierunkowej niecyklicznej, zawierającej w polu danych wartości całkowitoliczbowe:
+1. wstaw, dodającą do listy (we właściwe miejsce) nowy element, zawierający wprowadzaną z klawiatury liczbę całkowitą; prototyp funkcji jest następujący:
+void wstaw(Node **root, int wartosc);
+
+
+2. usun, usuwającą z listy wszystkie elementy, zawierające wprowadzaną z klawiatury liczbę całkowitą; prototyp funkcji jest następujący:
+void usun(Node **root, int wartosc);
+
+3. odwróc, funkcja odwracaja zawartosc listy.
+void odwróc(Node *root);
+Plikowi z kodem źródłowym programu, zawierającym ww. funkcje nadać nazwę Program 2.
